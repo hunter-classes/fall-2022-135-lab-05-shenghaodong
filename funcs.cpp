@@ -5,7 +5,7 @@
 
 //Task A. Is divisible?
 bool isDivisibleBy(int n, int d){
-    if(n % d){
+    if(n % d == 0){
         return true;
     }
     return false;
@@ -37,12 +37,21 @@ int nextPrime(int n){
 
 //Task D. Count primes in range
 int countPrimes(int a, int b){
+    int num = a;
     int counter = 0;
-    for(int i = a; i < b; i++){
-        if(isPrime(i) == true){
+    while(a < num <= b){
+        if(isPrime(num) == true){
             counter++;
+        }else if(num >= b){
+            break;
         }
+        num++;
     }
+    // for(int i = a; i < b; i++){
+    //     if(isPrime(i) == true){
+    //         counter++;
+    //     }
+    // }
     return counter;
 }
 
@@ -50,8 +59,10 @@ int countPrimes(int a, int b){
 
 //Task E. Is a twin prime?
 bool isTwinPrime(int n){
-    if(isPrime(n) == true && isPrime(n-2) == true || isPrime(n+2) == true){
-        return true;
+    if(isPrime(n) == true){
+        if(isPrime(n-2) == true || isPrime(n+2) == true){
+            return true;
+        }
     }
     return false;
 }
@@ -66,12 +77,13 @@ int nextTwinPrime(int n){
         }
         counter = nextPrime(counter);
     }
+    return -1;
 }
 
 
 //Task G. Largest twin prime in range
 int largestTwinPrime(int a, int b){
-    int largestPrime = 0;
+    int largestPrime = -1;
     int counter = a;
     while(true){
         if(nextTwinPrime(counter) > b){
