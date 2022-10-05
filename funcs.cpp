@@ -62,6 +62,7 @@ int nextTwinPrime(int n){
     while(true){
         if(isTwinPrime(nextPrime(counter) + 2) == true || isTwinPrime(nextPrime(counter) - 2)){
             return nextPrime(counter);
+            break;
         }
         counter = nextPrime(counter);
     }
