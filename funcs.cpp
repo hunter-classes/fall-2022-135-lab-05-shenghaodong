@@ -37,18 +37,39 @@ int nextPrime(int n){
 
 //Task D. Count primes in range
 int countPrimes(int a, int b){
-    
+    int counter = 0;
+    for(int i = a; i < b; i++){
+        if(isPrime(i) == true){
+            counter++;
+        }
+    }
+    return counter;
 }
 
 
 
 //Task E. Is a twin prime?
-
-
+bool isTwinPrime(int n){
+    if(isPrime(n) == true && isPrime(n-2) == true || isPrime(n+2) == true){
+        return true;
+    }
+    return false;
+}
 
 //Task F. Next twin prime
-
+int nextTwinPrime(int n){
+    int counter = n;
+    while(true){
+        if(isTwinPrime(nextPrime(counter) + 2) == true || isTwinPrime(nextPrime(counter) - 2)){
+            return nextPrime(counter);
+        }
+        counter = nextPrime(counter);
+    }
+}
 
 
 //Task G. Largest twin prime in range
-
+int largestTwinPrime(int a, int b){
+    //placeholder
+    return 1;
+}
