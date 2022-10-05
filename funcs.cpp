@@ -71,6 +71,15 @@ int nextTwinPrime(int n){
 
 //Task G. Largest twin prime in range
 int largestTwinPrime(int a, int b){
-    //placeholder
-    return 1;
+    int largestPrime = 0;
+    int counter = a;
+    while(true){
+        if(nextTwinPrime(counter) > b){
+            break;
+        }else if(nextTwinPrime(counter) > largestPrime){
+            largestPrime = nextTwinPrime(counter);
+            counter = nextTwinPrime(counter);
+        }
+    }
+    return largestPrime;
 }
